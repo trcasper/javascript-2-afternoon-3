@@ -2,19 +2,13 @@
   Once you complete a problem, refresh ./SpecRunner.html in your browser and check to see if the problem's test(s) are passing.
   Passed tests will be indicated by a green circle.
   Failed tests will be indicated by a red X.
-
   You can refresh the page at any time to re-run all the tests.
-
   In this repo your job is to write functions to make each function call work properly.
-
   Here's an example of code that will be given to you:
-
   sayHi('Hi Katie', function(thingToSay){
     alert(thingToSay);
   });
-
   It would be your job to create the sayHi function:
-
   var sayHi = function(str, cb){
     cb(str);
   }
@@ -28,7 +22,9 @@
 */
 
 // Code Here 
-
+function first(arr, cb){
+  cb(arr[0]);
+}
 // Do not edit the code below.
 var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan'];
 
@@ -48,7 +44,9 @@ first(names, function(firstName){
 */
 
 //Code Here
-
+function last(arr, cb){
+  cb(arr[arr.length -1]);
+}
 // Do not edit the code below.
 last(names, function(lastName){
   console.log('The last name in names is ' + lastName);
@@ -66,7 +64,9 @@ last(names, function(lastName){
 */
 
 //Code Here
-
+function multiply(num1, num2, cb){
+  cb(num1*num2);
+}
 // Do not edit the code below.
 multiply(4, 3, function(answer){
   console.log('The answer is ' + answer); //should console.log 12
@@ -85,7 +85,9 @@ multiply(4, 3, function(answer){
 */
 
 //Code Here 
-
+function contains(arr, name, cb){
+  cb(arr.includes(name));
+}
 // Do not edit the code below.
 contains(names, 'Colt', function(result){
   if(result === true){
@@ -106,7 +108,17 @@ contains(names, 'Colt', function(result){
 */
 
 //Code Here
-
+function uniq(arr, cb){
+  for(let i = 0; i < arr.length; i++){
+    for(let x = i+1; x<arr.length; x++){
+      if(arr[i] === arr[x]){
+        arr.splice(x, 1);
+        x--;
+      }
+    }
+  }
+  cb(arr);
+}
 // Do not edit the code below.
 uniq(names, function(uniqArr){
   console.log('The new names array with all the duplicate items removed is ', uniqArr);
@@ -123,7 +135,11 @@ uniq(names, function(uniqArr){
 */
 
 //Code Here 
-
+function each(arr, cb){
+  for(i = 0; i < arr.length; i++){
+    cb(arr[i], i);
+  }
+}
 // Do not edit the code below.
 each(names, function(item, indice){
   console.log('The item in the ' + indice + ' position is ' + item)
@@ -140,7 +156,13 @@ each(names, function(item, indice){
 */
 
 // Code here
-
+function getUserById(arr, id, cb){
+  for(i = 0; i < arr.length; i++){
+    if(arr[i].id === id){
+      cb(arr[i]);
+    }
+  }
+}
 // Do not edit the code below.
 var users = [
   {
